@@ -1,1 +1,7 @@
 api_secrets.json
+DataDumps/abuseIP/*
+!DataDumps/abuseIP/1.1.1.1.json
+DataDumps/urlScan/*
+!DataDumps/urlScan/1.1.1.1.json
+DataDumps/virusTotal/*
+!DataDumps/virusTotal/1.1.1.1.json

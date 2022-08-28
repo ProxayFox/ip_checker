@@ -9,18 +9,22 @@ cwd = os.getcwd()
 
 # Function to reqeust data from Virus total
 def vt_url_getData(ip):
-    # Get the API Secret
-    file = open('api_secrets.json', 'r')
-    vt = json.loads(file.read())
-    key = vt['api']['vt_key']
+    
+    # Defining the api-endpoint with the address on the end
     url = "https://www.virustotal.com/api/v3/ip_addresses/{}".format(ip)
+    
     # Headers with api key
+    # Get the API Secret
+    # fr = File Read
+    fr = open('api_secrets.json', 'r')
+    vt_key = json.loads(fr.read())['api']['vt_key']
+    # close the 
+    fr.close()
     headers = {
         "Accept": "application/json",
-        "x-apikey": key
+        "x-apikey": vt_key
     }
-    # close the 
-    file.close()
+    
     # return data to the request
     return requests.get(url, headers=headers)
 
