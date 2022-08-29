@@ -7,6 +7,13 @@ os.chdir(r'C:\xampp\htdocs\Python\IP_Validate')
 # Get the current working directory directory
 cwd = os.getcwd()
 
+def validate_ip_address(ip):
+    try:
+        ip = ipaddress.ip_address(ip)
+        return 1
+    except ValueError:
+        return 0
+
 #  Get the user to enter the address
 ip = input("Enter The Ip :: ")
 
