@@ -1,5 +1,3 @@
-import requests
-import json
 import os
 import vt_ip_score
 import abip_ip_score
@@ -9,10 +7,8 @@ os.chdir(r'C:\xampp\htdocs\Python\IP_Validate')
 # Get the current working directory directory
 cwd = os.getcwd()
 
+#  Get the user to enter the address
 ip = input("Enter The Ip :: ")
-# Grab the VT Cache directory
-# path_to_vtCache = cwd+"/DataDumps/virusTotal/"
-
 
 vt = vt_ip_score.vt_xr_data(ip)
 if vt == 1:

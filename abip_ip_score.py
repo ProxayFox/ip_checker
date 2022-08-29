@@ -6,8 +6,7 @@ import os
 os.chdir(r'C:\xampp\htdocs\Python\IP_Validate')
 # Get the current working directory directory
 cwd = os.getcwd()
-
-# Grab the VT Cache directory
+# Grab the ABIP Cache directory
 path_to_abipCache = cwd+"/DataDumps/abuseIP/"
 
 def abip_url_getData(ip):

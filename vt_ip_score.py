@@ -6,8 +6,7 @@ import os
 os.chdir(r'C:\xampp\htdocs\Python\IP_Validate')
 # Get the current working directory directory
 cwd = os.getcwd()
-
-# # Grab the VT Cache directory
+# Grab the VT Cache directory
 path_to_vtCache = cwd+"/DataDumps/virusTotal/"
 
 # Function to reqeust data from Virus total
