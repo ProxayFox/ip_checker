@@ -12,7 +12,7 @@ Enter The Ip ::
 Enter the address, and so far it'll show
 ```bash
 PS C:\path\to\working\dir> py .\main.py
-Enter The Ip :: 1.1.1.1
+Enter The IP/s :: 1.1.1.1
 Results From VT for 1.1.1.1
 AS Owner :: CLOUDFLARENET No. 13335
 harmless :: 80
@@ -26,6 +26,11 @@ Country Name :: United States of America
 AbuseIP Confidence Score :: 0
 Total Reports :: 25
 ```
+
+## How to bulk search for IPs
+Seporate each ip with a space such like bellow to search for multiple IP
+<br>
+`Enter The IP/s :: 1.1.1.1 1.0.0.1 8.8.8.8`
 
 # Create New file called api_secrets.json with the following
 ```json
