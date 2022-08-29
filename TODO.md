@@ -1,13 +1,16 @@
 # TODO
 ## In Progress
-- [ ] Add URL Investigation
+- [ ] Bulk lists
+
+## Backlog
+- [ ] URL Investigation
   - [ ] VT, ABIP, URLScan
   - [ ] URL Tracing
   - [ ] Whois
-  - [ ] URLScan
+- [ ] Domain Investigation
+  - [ ] VT, ABIP, URLScan
+  - [ ] Revers DNS
 - [ ] URLScan Intergration
-
-## Backlog
 - [ ] Incude OTX API
 - [ ] Add Hash investigations
 - [ ] Threat Feeds & White Lists
