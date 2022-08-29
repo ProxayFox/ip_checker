@@ -10,6 +10,11 @@
     }
 }
 ```
+Put the file in home dir of the app
 
-### Grabb the Keys
+
+## Grabb the Keys
 all the apis are free to use with limitations on amount of requests
+
+## TODO list for more information
+To be updated as I go
