@@ -7,6 +7,9 @@ os.chdir(r'C:\xampp\htdocs\Python\IP_Validate')
 # Get the current working directory directory
 cwd = os.getcwd()
 
+# # Grab the VT Cache directory
+path_to_vtCache = cwd+"/DataDumps/virusTotal/"
+
 # Function to reqeust data from Virus total
 def vt_url_getData(ip):
     
@@ -84,28 +87,28 @@ def vt_xr_data(ip):
             return 4
 
 
-ip = input("Enter The Ip :: ")
-# Grab the VT Cache directory
-path_to_vtCache = cwd+"/DataDumps/virusTotal/"
-vt = vt_xr_data(ip)
-if vt == 1:
-    print("File not created")
-elif vt == 2:
-    print('Not Found or Missing Value.')
-elif vt == 3:
-    print('No Response.')
-elif vt == 4:
-    print("Something is missing")
-else:
-    data_attributes_lastAnalysisStats_harmless = vt['data']['attributes']['last_analysis_stats']['harmless']
-    data_attributes_lastAnalysisStats_malicious = vt['data']['attributes']['last_analysis_stats']['malicious']
-    data_attributes_lastAnalysisStats_suspicious = vt['data']['attributes']['last_analysis_stats']['suspicious']
-    data_attributes_lastAnalysisStats_undetected = vt['data']['attributes']['last_analysis_stats']['undetected']
-    data_attributes_asOwner = vt['data']['attributes']['as_owner']
-    data_attributes_asn = vt['data']['attributes']['asn']
-    print("Results for", ip)
-    print("AS Owner ::", data_attributes_asOwner, "No.", data_attributes_asn)
-    print("harmless ::", data_attributes_lastAnalysisStats_harmless)
-    print("malicious ::", data_attributes_lastAnalysisStats_malicious)
-    print("suspicious ::", data_attributes_lastAnalysisStats_suspicious)
-    print("undetected ::", data_attributes_lastAnalysisStats_undetected)
+# ip = input("Enter The Ip :: ")
+# # Grab the VT Cache directory
+# path_to_vtCache = cwd+"/DataDumps/virusTotal/"
+# vt = vt_xr_data(ip)
+# if vt == 1:
+#     print("File not created")
+# elif vt == 2:
+#     print('Not Found or Missing Value.')
+# elif vt == 3:
+#     print('No Response.')
+# elif vt == 4:
+#     print("Something is missing")
+# else:
+#     data_attributes_lastAnalysisStats_harmless = vt['data']['attributes']['last_analysis_stats']['harmless']
+#     data_attributes_lastAnalysisStats_malicious = vt['data']['attributes']['last_analysis_stats']['malicious']
+#     data_attributes_lastAnalysisStats_suspicious = vt['data']['attributes']['last_analysis_stats']['suspicious']
+#     data_attributes_lastAnalysisStats_undetected = vt['data']['attributes']['last_analysis_stats']['undetected']
+#     data_attributes_asOwner = vt['data']['attributes']['as_owner']
+#     data_attributes_asn = vt['data']['attributes']['asn']
+#     print("Results for", ip)
+#     print("AS Owner ::", data_attributes_asOwner, "No.", data_attributes_asn)
+#     print("harmless ::", data_attributes_lastAnalysisStats_harmless)
+#     print("malicious ::", data_attributes_lastAnalysisStats_malicious)
+#     print("suspicious ::", data_attributes_lastAnalysisStats_suspicious)
+#     print("undetected ::", data_attributes_lastAnalysisStats_undetected)

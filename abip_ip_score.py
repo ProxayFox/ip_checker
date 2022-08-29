@@ -84,28 +84,28 @@ def abip_xr_data(ip):
             # print("Something is missing")
             return 4
 
-ip = input("Enter The Ip :: ")
-abip = abip_xr_data(ip)
-if abip == 1:
-    print("File not created")
-elif abip == 2:
-    print('Not Found or Missing Value.')
-elif abip == 3:
-    print('No Response.')
-elif abip == 4:
-    print("Something is missing")
-else:
-    data_isp = abip['data']['isp']
-    data_usageType = abip['data']['usageType']
-    data_countryName = abip['data']['countryName']
-    data_abuseConfidenceScore = abip['data']['abuseConfidenceScore']
-    data_totalReports = abip['data']['totalReports']
-    print("Results for", ip)
-    print("ISP ::", data_isp)
-    print("Usage Type ::", data_usageType)
-    print("Country Name ::", data_countryName)
-    print("AbuseIP Confidence Score ::", data_abuseConfidenceScore)
-    print("Total Reports ::", data_totalReports)
+# ip = input("Enter The Ip :: ")
+# abip = abip_xr_data(ip)
+# if abip == 1:
+#     print("File not created")
+# elif abip == 2:
+#     print('Not Found or Missing Value.')
+# elif abip == 3:
+#     print('No Response.')
+# elif abip == 4:
+#     print("Something is missing")
+# else:
+#     data_isp = abip['data']['isp']
+#     data_usageType = abip['data']['usageType']
+#     data_countryName = abip['data']['countryName']
+#     data_abuseConfidenceScore = abip['data']['abuseConfidenceScore']
+#     data_totalReports = abip['data']['totalReports']
+#     print("Results for", ip)
+#     print("ISP ::", data_isp)
+#     print("Usage Type ::", data_usageType)
+#     print("Country Name ::", data_countryName)
+#     print("AbuseIP Confidence Score ::", data_abuseConfidenceScore)
+#     print("Total Reports ::", data_totalReports)
 
 
 # ip = input("Enter The Ip :: ")
