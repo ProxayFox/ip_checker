@@ -49,22 +49,22 @@ def abip_xr_data(ip):
         if abip_api.status_code == 200:
             # format the returned results
             decodedResponse = json.loads(abip_api.text)
-            abip_api_formated = json.dumps(decodedResponse, sort_keys=True, indent=4)
+            abip_api_formatted = json.dumps(decodedResponse, sort_keys=True, indent=4)
 
             # fx = file create
-            # creat the file with the ip.json
+            # create the file with the ip.json
             fx = open(path_to_abipCache+ip+".json", 'x')
             # write the data from the api request to the new file
-            fx.write(abip_api_formated)
+            fx.write(abip_api_formatted)
             # close the created file
             fx.close()
-            # Check if the file was succesfully created
+            # Check if the file was successfully created
             if os.path.isfile(path_to_abipCache+ip+'.json') == 1:
                 # print("New Cache file has been made")
                 # fr = file read
                 # Read the newly made file
                 fr = open(path_to_abipCache+ip+".json", 'r')
-                # load the json valuse
+                # load the json values
                 data = fr.read()
                 # print(ip, "::" , data['data']['attributes']['last_analysis_stats'])
                 # close the file

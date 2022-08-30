@@ -28,9 +28,10 @@ Total Reports :: 25
 ```
 
 ## How to bulk search for IPs
-Seporate each ip with a space such like bellow to search for multiple IP
+Separate each ip with a space such like bellow to search for multiple IP
 <br>
 `Enter The IP/s :: 1.1.1.1 1.0.0.1 8.8.8.8`
+
 
 # Create New file called api_secrets.json with the following
 ```json
@@ -45,7 +46,7 @@ Seporate each ip with a space such like bellow to search for multiple IP
 ```
 Put the file in home dir of the app
 
-## Grabb the Keys
+## Grab the Keys
 all the apis are free to use with limitations on amount of requests
 
 ## TODO list for more information

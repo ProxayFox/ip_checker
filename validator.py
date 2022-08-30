@@ -1,5 +1,6 @@
 import ipaddress 
 
+# IP validator
 def validate_ip_address(address):
     try:
         ip = ipaddress.ip_address(address)
@@ -7,9 +8,8 @@ def validate_ip_address(address):
     except ValueError:
         return 0
 
-ip = validate_ip_address(input("Enter The IP/s :: "))
+# TODO: URL Validator
 
-if ip == 1:
-    print("good")
-elif ip == 0:
-    print("bad")
+# TODO: Hash Validator
+
+# TODO: Email Validator

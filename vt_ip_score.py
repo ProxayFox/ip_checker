@@ -37,36 +37,36 @@ def vt_file_getData(ip):
     file.close()
     return data
 
-# Funcation to handle VirustTotal API/File requests
+# Function to handle VirusTotal API/File requests
 def vt_xr_data(ip):
     # Check if the file exists
     if os.path.isfile(path_to_vtCache+ip+'.json') == 1:
         # print("File is there")
-        # call funcation to get the file
+        # call function to get the file
         vt_file = vt_file_getData(ip)
         # print(ip, "::" , vt_file['data']['attributes']['last_analysis_stats'])
         return vt_file
     # if the file isn't there do an api call to get data and make file
     else:
-        # call the cuncation that handles the api request to VT
+        # call the cunctation that handles the api request to VT
         vt_api = vt_url_getData(ip)
         # print(vt_api.status_code)
         # Check if the return code is good
         if vt_api.status_code == 200:   
             # fx = file create
-            # creat the file with the ip.json
+            # create the file with the ip.json
             fx = open(path_to_vtCache+ip+".json", 'x')
             # write the data from the api request to the new file
             fx.write(vt_api.text)
             # close the created file
             fx.close()
-            # Check if the file was succesfully created
+            # Check if the file was successfully created
             if os.path.isfile(path_to_vtCache+ip+'.json') == 1:
                 # print("New Cache file has been made")
                 # fr = file read
                 # Read the newly made file
                 fr = open(path_to_vtCache+ip+".json", 'r')
-                # load the json valuse
+                # load the json values
                 data = json.loads(fr.read())
                 # print(ip, "::" , data['data']['attributes']['last_analysis_stats'])
                 # close the file

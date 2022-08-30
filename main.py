@@ -1,28 +1,20 @@
-import ipaddress 
+# Import Python libraries  
+
+# Import Internal Functions
 import vt_ip_score
 import abip_ip_score
-
-# IP validater
-# Return 1 if the IP is Valid
-# Return 0 if the IP is not Valid
-def validate_ip_address(address):
-    try:
-        ip = ipaddress.ip_address(address)
-        return 1
-    except ValueError:
-        return 0
-
-
+import validator
 
 # Get the data from the user for IPs
 grab_ip = input("Enter The IP/s :: ")
-# Split out the space as the seporator for IPs
+# Creates a string separating the IPs at space
 split_ip = grab_ip.split(' ')
 
+# TODO: Move to callable function
 # Loop through IPs will also work with one address
 for ip in split_ip :
     # IP Validator request
-    v_ip = validate_ip_address(ip)
+    v_ip = validator.validate_ip_address(ip)
     # If IP is valid validator will return 1
     if v_ip == 1:
         vt = vt_ip_score.vt_xr_data(ip)

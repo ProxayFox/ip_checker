@@ -10,16 +10,17 @@
 - [ ] Domain Investigation
   - [ ] VT, ABIP, URLScan
   - [ ] Revers DNS
-- [ ] URLScan Intergration
-- [ ] Incude OTX API
+- [ ] URLScan Integration
+- [ ] Include OTX API
 - [ ] Add Hash investigations
 - [ ] Threat Feeds & White Lists
   - [ ] Threat Feeds for IPs
   - [ ] Threat Feeds for URLs
-  - [ ] Threat Feeds for Hashs
+  - [ ] Threat Feeds for Hashes
   - [ ] Threat Feed updater
   - [ ] White Lists
 - [ ] User open source systems for help
+- [ ] Look Into ipqualityscore.com for VPN/Proxy etc
 
 ## Complete
 - [x] Setup VT - 28/08/2022
