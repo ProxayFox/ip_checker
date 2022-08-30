@@ -9,7 +9,7 @@ cwd = os.getcwd()
 # Grab the VT Cache directory
 path_to_vtCache = cwd+"/DataDumps/virusTotal/"
 
-# Function to reqeust data from Virus total
+# Function to request data from Virus total
 def vt_url_getData(ip):
     
     # Defining the api-endpoint with the address on the end
