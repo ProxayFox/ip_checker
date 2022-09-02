@@ -13,7 +13,7 @@ headers = {
     'Content-Type': 'application/json'
 }
 data = {
-    "url": "http://nc.proxweb.dev/",
+    "url": "http://breckcraigint.pro",
     "visibility": "public"
     }
 response = requests.post('https://urlscan.io/api/v1/scan/',headers=headers, data=json.dumps(data))

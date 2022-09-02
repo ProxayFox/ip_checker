@@ -20,7 +20,8 @@
   - [ ] Threat Feed updater
   - [ ] White Lists
 - [ ] User open source systems for help
-- [ ] Look Into ipqualityscore.com for VPN/Proxy etc
+- [ ] Look into ipqualityscore.com for VPN/Proxy etc
+- [ ] Look into infobyip.com 
 
 ## Complete
 - [x] Setup VT - 28/08/2022
