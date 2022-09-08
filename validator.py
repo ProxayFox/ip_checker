@@ -1,4 +1,4 @@
-import ipaddress 
+import ipaddress
 
 # IP validator
 def validate_ip_address(address):

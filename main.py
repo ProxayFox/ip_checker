@@ -1,9 +1,9 @@
 # Import Python libraries  
+import validators
 
 # Import Internal Functions
 import vt_ip_score
 import abip_ip_score
-import validator
 
 # Get the data from the user for IPs
 grab_ip = input("Enter The IP/s :: ")
@@ -14,9 +14,9 @@ split_ip = grab_ip.split(' ')
 # Loop through IPs will also work with one address
 for ip in split_ip :
     # IP Validator request
-    v_ip = validator.validate_ip_address(ip)
-    # If IP is valid validator will return 1
-    if v_ip == 1:
+    v_ip = not validators.ip_address.ipv4(ip)
+    # If IP is valid validator will return False - I know this sounds dumb but trust me
+    if v_ip == False:
         vt = vt_ip_score.vt_xr_data(ip)
         if vt == 1:
             print('VTIP :: File not created for Value :: '+ip)
@@ -66,10 +66,11 @@ for ip in split_ip :
             print("AbuseIP Confidence Score ::", data_abuseConfidenceScore)
             print("Total User Reports ::", data_totalReports)
             print("")
-    # If IP is valid validator will return 0
-    elif v_ip == 0:
+    # If IP is valid validator will return True - I know this sounds dumb but trust me
+    elif v_ip == True:
         print("Invalid IP address for value :: "+ip)
         print("")
     # Something has gone wrong don't know what would cause this xD
     else:
         print("You Broke something :D")
+

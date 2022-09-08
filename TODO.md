@@ -1,14 +1,24 @@
 # TODO
 ## In Progress
 - [ ] URL Investigation
-  - [x] VT
-  - [x] ABIP
+  - [ ] VT
+    - [ ] Grab root domain and check
+    - [ ] Grab sub domain and check
+  - [ ] ABIP
+    - [ ] Grab root domain and check
+    - [ ] Grab sub domain and check
   - [ ] URLScan
+    - [x] Get API Data
+    - [x] Save to Cache
+    - [ ] Get further data from the api response
+      - [ ] Get Image - Maybe
+      - [ ] get all seen urls - Maybe
+    - [ ] Save under root domain in new dir
   - [ ] URL Tracing
   - [ ] Whois
-- [ ] check age on cache and recall for old files
 
 ## Backlog
+- [ ] check age on cache and recall for old files
 - [ ] Domain Investigation
   - [ ] VT, ABIP, URLScan
   - [ ] Revers DNS
