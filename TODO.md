@@ -1,9 +1,12 @@
 # TODO
 ## In Progress
 - [ ] URL Investigation
-  - [ ] VT, ABIP, URLScan
+  - [x] VT
+  - [x] ABIP
+  - [ ] URLScan
   - [ ] URL Tracing
   - [ ] Whois
+- [ ] check age on cache and recall for old files
 
 ## Backlog
 - [ ] Domain Investigation

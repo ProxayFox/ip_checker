@@ -3,7 +3,7 @@ import json
 import os
 
 # set working directory (windows)
-os.chdir(r'C:\xampp\htdocs\Python\IP_Validate')
+os.chdir(os.getcwd())
 # Get the current working directory directory
 cwd = os.getcwd()
 # Grab the ABIP Cache directory
@@ -60,53 +60,19 @@ def abip_xr_data(ip):
             fx.close()
             # Check if the file was successfully created
             if os.path.isfile(path_to_abipCache+ip+'.json') == 1:
-                # print("New Cache file has been made")
                 # fr = file read
                 # Read the newly made file
                 fr = open(path_to_abipCache+ip+".json", 'r')
                 # load the json values
                 data = fr.read()
-                # print(ip, "::" , data['data']['attributes']['last_analysis_stats'])
                 # close the file
                 fr.close()
                 return json.loads(data)
             else:
-                # print("File not created")
                 return 1
         elif abip_api.status_code == 400:
-            # print('Not Found or Missing Value.')
             return 2
         elif abip_api.status_code == 404:
-            # print('No Response.')
             return 3
         else:
-            # print("Something is missing")
             return 4
-
-# ip = input("Enter The Ip :: ")
-# abip = abip_xr_data(ip)
-# if abip == 1:
-#     print("File not created")
-# elif abip == 2:
-#     print('Not Found or Missing Value.')
-# elif abip == 3:
-#     print('No Response.')
-# elif abip == 4:
-#     print("Something is missing")
-# else:
-#     data_isp = abip['data']['isp']
-#     data_usageType = abip['data']['usageType']
-#     data_countryName = abip['data']['countryName']
-#     data_abuseConfidenceScore = abip['data']['abuseConfidenceScore']
-#     data_totalReports = abip['data']['totalReports']
-#     print("Results for", ip)
-#     print("ISP ::", data_isp)
-#     print("Usage Type ::", data_usageType)
-#     print("Country Name ::", data_countryName)
-#     print("AbuseIP Confidence Score ::", data_abuseConfidenceScore)
-#     print("Total Reports ::", data_totalReports)
-
-
-# ip = input("Enter The Ip :: ")
-# abip = abip_url_getData(ip)
-# print(abip.status_code)
