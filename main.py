@@ -64,7 +64,7 @@ for ip in split_ip :
             print("Usage Type ::", data_usageType)
             print("Country Name ::", data_countryName)
             print("AbuseIP Confidence Score ::", data_abuseConfidenceScore)
-            print("Total Reports ::", data_totalReports)
+            print("Total User Reports ::", data_totalReports)
             print("")
     # If IP is valid validator will return 0
     elif v_ip == 0:

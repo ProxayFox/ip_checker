@@ -3,8 +3,9 @@
         "attributes": {
             "jarm": "27d3ed3ed0003ed1dc42d43d00041d6183ff1bfae51ebd88d70384363d525c",
             "network": "1.1.1.0/24",
-            "last_https_certificate_date": 1661661598,
+            "last_https_certificate_date": 1662473976,
             "tags": [],
+            "last_analysis_date": 1662473675,
             "as_owner": "CLOUDFLARENET",
             "last_analysis_stats": {
                 "harmless": 80,
@@ -575,10 +576,10 @@
                 }
             },
             "reputation": 134,
-            "last_modification_date": 1661666380,
+            "last_modification_date": 1662509664,
             "total_votes": {
-                "harmless": 63,
-                "malicious": 8
+                "harmless": 64,
+                "malicious": 9
             },
             "last_https_certificate": {
                 "size": 1533,
@@ -651,9 +652,9 @@
                 "subject": {
                     "C": "US",
                     "ST": "California",
-                    "CN": "cloudflare-dns.com",
+                    "L": "San Francisco",
                     "O": "Cloudflare, Inc.",
-                    "L": "San Francisco"
+                    "CN": "cloudflare-dns.com"
                 }
             },
             "asn": 13335,
