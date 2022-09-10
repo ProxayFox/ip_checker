@@ -2,8 +2,8 @@
 import validators
 
 # Import Internal Functions
-import vt_ip_score
-import abip_ip_score
+import virusTotal
+import abipdb
 
 # Get the data from the user for IPs
 grab_ip = input("Enter The IP/s :: ")
@@ -17,7 +17,7 @@ for ip in split_ip :
     v_ip = not validators.ip_address.ipv4(ip)
     # If IP is valid validator will return False - I know this sounds dumb but trust me
     if v_ip == False:
-        vt = vt_ip_score.vt_xr_data(ip)
+        vt = virusTotal.vt_xr_data(ip)
         if vt == 1:
             print('VTIP :: File not created for Value :: '+ip)
         elif vt == 2:
@@ -40,7 +40,7 @@ for ip in split_ip :
             print("suspicious ::", data_attributes_lastAnalysisStats_suspicious)
             print("undetected ::", data_attributes_lastAnalysisStats_undetected)
 
-        abip = abip_ip_score.abip_xr_data(ip)
+        abip = abipdb.abip_xr_data(ip)
         if abip == 1:
             print('ABIP :: File not created for Value :: '+ip)
             print("")
