@@ -44,6 +44,7 @@ def abip_xr_data(ip):
     if os.path.isfile(path_to_abipCache+ip+'.json') == 1:
         abip_file = abip_file_getData(ip)
         return abip_file
+
     else:
         abip_api = abip_url_getData(ip)
         if abip_api.status_code == 200:
@@ -69,10 +70,14 @@ def abip_xr_data(ip):
                 fr.close()
                 return json.loads(data)
             else:
-                return 1
+                return "ABIP :: File not created for Value :: "+ip
+                # return 1
         elif abip_api.status_code == 400:
-            return 2
+            return "ABIP :: Not Found or Missing Value for Value :: "+ip
+            # return 2
         elif abip_api.status_code == 404:
-            return 3
+            return "ABIP :: No Response for Value :: "+ip
+            # return 3
         else:
-            return 4
+            return "ABIP :: Something is missing for Value :: "+ip
+            # return 4

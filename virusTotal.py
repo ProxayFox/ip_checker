@@ -67,12 +67,22 @@ def vt_xr_data(ip):
                 data = json.loads(fr.read())
                 # close the file
                 fr.close()
+                # return data
                 return data
+                # return {"status": 1, "data": data}
             else:
-                return 1
+                return "VTIP :: File not created for Value :: "+ip
+                # return {"status": 0, "data": "VTIP :: File not created for Value :: "+ip}
+                # return 1
         elif vt_api.status_code == 400:
-            return 2
+            return "VTIP :: Not Found or Missing Value for Value :: "+ip
+            # return {"status": 0, "data": "VTIP :: Not Found or Missing Value for Value :: "+ip}
+            # return 2
         elif vt_api.status_code == 404:
-            return 3
+            return "VTIP :: No Response for Value :: "+ip
+            # return {"status": 0, "data": "VTIP :: No Response for Value :: "+ip}
+            # return 3
         else:
-            return 4
+            return "VTIP :: Something is missing for Value :: "+ip
+            # return {"status": 0, "data": "VTIP :: Something is missing for Value :: "+ip}
+            # return 4

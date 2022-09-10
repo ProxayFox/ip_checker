@@ -11,7 +11,7 @@
     - [ ] Retention on Cache
   - [ ] URLScan
     - [x] Get API Data
-    - [ ] Save to Cache
+    - [x] Save to Cache
     - [ ] Retention on Cache
     - [ ] Get further data from the api response
       - [ ] Get Image - Maybe

@@ -17,16 +17,11 @@ for ip in split_ip :
     v_ip = not validators.ip_address.ipv4(ip)
     # If IP is valid validator will return False - I know this sounds dumb but trust me
     if v_ip == False:
+        # Call VT Checker
         vt = virusTotal.vt_xr_data(ip)
-        if vt == 1:
-            print('VTIP :: File not created for Value :: '+ip)
-        elif vt == 2:
-            print('VTIP :: Not Found or Missing Value for Value :: '+ip)
-        elif vt == 3:
-            print('VTIP :: No Response for Value :: '+ip)
-        elif vt == 4:
-            print('VTIP :: Something is missing for Value :: '+ip)
-        else:
+        # Error Handler
+        # Check if returned value is a dictionary
+        if type(vt) is dict:
             data_attributes_lastAnalysisStats_harmless = vt['data']['attributes']['last_analysis_stats']['harmless']
             data_attributes_lastAnalysisStats_malicious = vt['data']['attributes']['last_analysis_stats']['malicious']
             data_attributes_lastAnalysisStats_suspicious = vt['data']['attributes']['last_analysis_stats']['suspicious']
@@ -39,21 +34,18 @@ for ip in split_ip :
             print("malicious ::", data_attributes_lastAnalysisStats_malicious)
             print("suspicious ::", data_attributes_lastAnalysisStats_suspicious)
             print("undetected ::", data_attributes_lastAnalysisStats_undetected)
+        # Check if returned value is a string and print it
+        elif type(vt) is str:
+            print(vt)
+        # I'm not sure what would get to this point but something has gone wrong
+        else: 
+            print("VTIP :: Something has gone wrong")
 
+        # Call ABIP Checker
         abip = abipdb.abip_xr_data(ip)
-        if abip == 1:
-            print('ABIP :: File not created for Value :: '+ip)
-            print("")
-        elif vt == 2:
-            print('ABIP :: Not Found or Missing Value for Value :: '+ip)
-            print("")
-        elif vt == 3:
-            print('ABIP :: No Response for Value :: '+ip)
-            print("")
-        elif vt == 4:
-            print('ABIP :: Something is missing for Value :: '+ip)
-            print("")
-        else:
+        # Error Handler
+        # Check if returned value is a dictionary
+        if type(abip) is dict:
             data_isp = abip['data']['isp']
             data_usageType = abip['data']['usageType']
             data_countryName = abip['data']['countryName']
@@ -66,6 +58,13 @@ for ip in split_ip :
             print("AbuseIP Confidence Score ::", data_abuseConfidenceScore)
             print("Total User Reports ::", data_totalReports)
             print("")
+        # Check if returned value is a string and print it
+        elif type(abip) is str:
+            print(abip)
+        # I'm not sure what would get to this point but something has gone wrong
+        else: 
+            print("ABIP :: Something has gone wrong")
+
     # If IP is valid validator will return True - I know this sounds dumb but trust me
     elif v_ip == True:
         print("Invalid IP address for value :: "+ip)
@@ -73,4 +72,3 @@ for ip in split_ip :
     # Something has gone wrong don't know what would cause this xD
     else:
         print("You Broke something :D")
-
