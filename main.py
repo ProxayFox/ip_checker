@@ -22,18 +22,18 @@ for ip in split_ip :
         # Error Handler
         # Check if returned value is a dictionary
         if type(vt) is dict:
-            data_attributes_lastAnalysisStats_harmless = vt['data']['attributes']['last_analysis_stats']['harmless']
-            data_attributes_lastAnalysisStats_malicious = vt['data']['attributes']['last_analysis_stats']['malicious']
-            data_attributes_lastAnalysisStats_suspicious = vt['data']['attributes']['last_analysis_stats']['suspicious']
-            data_attributes_lastAnalysisStats_undetected = vt['data']['attributes']['last_analysis_stats']['undetected']
-            data_attributes_asOwner = vt['data']['attributes']['as_owner']
-            data_attributes_asn = vt['data']['attributes']['asn']
             print("Results From VT for", ip)
-            print("AS Owner ::", data_attributes_asOwner, "No.", data_attributes_asn)
-            print("harmless ::", data_attributes_lastAnalysisStats_harmless)
-            print("malicious ::", data_attributes_lastAnalysisStats_malicious)
-            print("suspicious ::", data_attributes_lastAnalysisStats_suspicious)
-            print("undetected ::", data_attributes_lastAnalysisStats_undetected)
+            try:
+                print("AS Owner ::", vt['data']['attributes']['as_owner'], "No.", vt['data']['attributes']['asn'])
+            except:
+                print("AS Owner :: Missing :: No. Missing")
+            print("harmless ::", vt['data']['attributes']['last_analysis_stats']['harmless'])
+            print("malicious ::", vt['data']['attributes']['last_analysis_stats']['malicious'])
+            print("suspicious ::", vt['data']['attributes']['last_analysis_stats']['suspicious'])
+            # print("undetected ::", vt['data']['attributes']['last_analysis_stats']['undetected'])
+            # print("VT Community")
+            print("Com Vote Harmless :: ", vt['data']['attributes']['total_votes']['harmless'])
+            print("Com Vote Malicious :: ", vt['data']['attributes']['total_votes']['malicious'])
         # Check if returned value is a string and print it
         elif type(vt) is str:
             print(vt)
@@ -46,17 +46,12 @@ for ip in split_ip :
         # Error Handler
         # Check if returned value is a dictionary
         if type(abip) is dict:
-            data_isp = abip['data']['isp']
-            data_usageType = abip['data']['usageType']
-            data_countryName = abip['data']['countryName']
-            data_abuseConfidenceScore = abip['data']['abuseConfidenceScore']
-            data_totalReports = abip['data']['totalReports']
             print("Results From ABIP for", ip)
-            print("ISP ::", data_isp)
-            print("Usage Type ::", data_usageType)
-            print("Country Name ::", data_countryName)
-            print("AbuseIP Confidence Score ::", data_abuseConfidenceScore)
-            print("Total User Reports ::", data_totalReports)
+            print("ISP ::", abip['data']['isp'])
+            print("Usage Type ::", abip['data']['usageType'])
+            print("Country Name ::", abip['data']['countryName'])
+            print("AbuseIP Confidence Score ::", abip['data']['abuseConfidenceScore'])
+            print("Total User Reports ::", abip['data']['totalReports'])
             print("")
         # Check if returned value is a string and print it
         elif type(abip) is str:

@@ -40,6 +40,7 @@
 - [ ] Look into ipqualityscore.com for VPN/Proxy etc
 - [ ] Look into infobyip.com 
 - [ ] Look into ip2proxy.com
+- [ ] Look into ipinfo.io
 
 ## Complete
 - [x] Setup VT - 28/08/2022
