@@ -4,12 +4,15 @@
   - [ ] VT
     - [ ] Grab root domain and check
     - [ ] Grab sub domain and check
+    - [ ] Retention on Cache
   - [ ] ABIP
     - [ ] Grab root domain and check
     - [ ] Grab sub domain and check
+    - [ ] Retention on Cache
   - [ ] URLScan
     - [x] Get API Data
-    - [x] Save to Cache
+    - [ ] Save to Cache
+    - [ ] Retention on Cache
     - [ ] Get further data from the api response
       - [ ] Get Image - Maybe
       - [ ] get all seen urls - Maybe
@@ -18,6 +21,8 @@
   - [ ] Whois
 
 ## Backlog
+- [ ] Create some sort of config
+  - [ ] Cache retention 
 - [ ] check age on cache and recall for old files
 - [ ] Domain Investigation
   - [ ] VT, ABIP, URLScan
