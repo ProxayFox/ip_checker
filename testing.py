@@ -3,6 +3,7 @@ import validators
 import requests
 import json
 import os
+import hashlib
 
 
 # set working directory (windows)
@@ -33,10 +34,17 @@ def urlscan_URL_GetData(url):
     # Return to request with the decode plus more making it better to view the data
     return requests.post('https://urlscan.io/api/v1/scan/',headers=headers, data=json.dumps(data))
 
+# because you can't save files with : or / the name is converted to a hash
+def urlScan_File_hash(url):
+    # v = Validated, h = Hashed, s = stringed
+    h_url = hashlib.sha1(url.encode('utf-8')).hexdigest()
+    # sh_url = int(h_url)
+    return h_url
+
 #  Grab file and read the data
 def urlScan_file_getData(url):
     # Grab File and set to read
-    file = open(path_to_urlScan_Cache+url+'.json','r')
+    file = open(path_to_urlScan_Cache+urlScan_File_hash(url)+'.json','r')
     # Read the file and load json
     data = json.loads(file.read())
     # Format the data to be readable
@@ -46,13 +54,13 @@ def urlScan_file_getData(url):
     # Return with the files data
     return data_format
 
-def urlScan_file_saveData(urlScan_api):
+def urlScan_file_saveData(urlScan_api, url):
     # Get the response to look nicer
     decodedResponse = json.loads(urlScan_api.text)
     urlScan_formatted = json.dumps(decodedResponse, sort_keys=True, indent=4)
     # fx = file create
     # create the file with the ip.json
-    fx = open(path_to_urlScan_Cache+url+".json", 'x')
+    fx = open(path_to_urlScan_Cache+urlScan_File_hash(url)+".json", 'x')
     # write the data from the api request to the new file
     fx.write(urlScan_formatted)
     # close the created file
@@ -65,7 +73,7 @@ def urlScan_xr_data(url):
     # If IP is valid validator will return False - I know this sounds dumb but trust me
     if v_url == False:
         # Check if the cache file already there
-        if os.path.isfile(path_to_urlScan_Cache+url+'.json') == 1:
+        if os.path.isfile(path_to_urlScan_Cache+urlScan_File_hash(url)+'.json') == 1:
             # with the cache already being there, get the data
             urlScan_file = urlScan_file_getData(url)
             # Return the results from the cache file
@@ -77,14 +85,14 @@ def urlScan_xr_data(url):
             # Check if the api call was successful
             if urlScan_api.status_code == 200:
                 # Pass the file to be saved in cache
-                urlScan_file_saveData(urlScan_api)
+                urlScan_file_saveData(urlScan_api, url)
 
                 # Now that the file should be made, call it
                 # TODO :: Maybe find a better way or trust it's there so the data passer can be faster
-                if os.path.isfile(path_to_urlScan_Cache+url+'.json') == 1:
+                if os.path.isfile(path_to_urlScan_Cache+urlScan_File_hash(url)+'.json') == 1:
                     
                     # After the file has been created and checked all is well grab that data
-                    data = urlScan_file_getData(v_url)
+                    data = urlScan_file_getData(url)
                     return data
                 else:
                     return "URLScan :: File not created for Value :: "+url
@@ -107,3 +115,4 @@ print("Please note: urls are scanned publicly")
 url = input("Enter The URL :: ")
 url_request = urlScan_xr_data(url)
 print(url_request)
+# print(urlScan_File_hash(url))
