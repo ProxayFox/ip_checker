@@ -1,21 +1,22 @@
-import requests
-import json
 import os
+import fnmatch
+import json
+import time
 
-def vt_url_getData(ip):
-    # Get the API Secret
-    # fr = File Read
-    fr = open('api_secrets.json', 'r')
-    # gss = Google Safe Search
-    gss_key = json.loads(fr.read())['api']['google']
-    # close the 
-    fr.close()
-    # Defining the api-endpoint with the address on the end
-    url = "https://safebrowsing.googleapis.com/v4/threatMatches:find?key="+gss_key
-    
-    headers = {
-        "Accept": "application/json"
-    }
-    
-    # return data to the request
-    return requests.get(url, headers=headers)
+# set working directory (windows)
+os.chdir(os.getcwd())
+# Get the current working directory directory
+cwd = os.getcwd()
+# Grab the VT Cache directory
+path_to_vtCache = cwd+"/DataDumps/virusTotal"
+
+ip = '1.1.1.1'
+# currentTime = int(time.time())
+
+test= path_to_vtCache+ip+'_'+str(int(time.time()))+".json"
+print(test)
+
+
+
+
+

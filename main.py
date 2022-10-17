@@ -15,7 +15,7 @@ split_ip = grab_ip.split(' ')
 for ip in split_ip :
     # IP Validator request
     v_ip = not validators.ip_address.ipv4(ip)
-    # If IP is valid validator will return False - I know this sounds dumb but trust me
+    # If IP is valid validator will return False - This confuses me too
     if v_ip == False:
         # Call VT Checker
         vt = virusTotal.vt_xr_data(ip)
@@ -39,7 +39,7 @@ for ip in split_ip :
             print(vt)
         # I'm not sure what would get to this point but something has gone wrong
         else: 
-            print("VTIP :: Something has gone wrong")
+            print(vt)
 
         # Call ABIP Checker
         abip = abipdb.abip_xr_data(ip)
@@ -60,7 +60,7 @@ for ip in split_ip :
         else: 
             print("ABIP :: Something has gone wrong")
 
-    # If IP is valid validator will return True - I know this sounds dumb but trust me
+    # If IP is valid validator will return True - This confuses me too
     elif v_ip == True:
         print("Invalid IP address for value :: "+ip)
         print("")
