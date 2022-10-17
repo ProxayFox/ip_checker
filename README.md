@@ -3,7 +3,9 @@
 ## how to run as of 29/08/2022
 In the terminal or you method of running py run:
 <br>
-`py main.py`
+```
+py main.py
+```
 <br>
 It will ask you to enter the address to search
 ```bash
@@ -30,8 +32,17 @@ Total Reports :: 25
 ## How to bulk search for IPs
 Separate each ip with a space such like bellow to search for multiple IP
 <br>
-`Enter The IP/s :: 1.1.1.1 1.0.0.1 8.8.8.8`
+```
+Enter The IP/s :: 1.1.1.1 1.0.0.1 8.8.8.8
+```
 
+
+
+# Setup the Config
+```json
+"holding_days": "7"
+```
+Update the holding days to increase or decrease how long the script will hold the request. This is to save on API requests
 
 # Create New file called api_secrets.json with the following
 ```json
@@ -45,7 +56,7 @@ Separate each ip with a space such like bellow to search for multiple IP
 }
 ```
 Put the file in home dir of the app
-
+ 
 ## Grab the Keys
 all the apis are free to use with limitations on amount of requests
 
