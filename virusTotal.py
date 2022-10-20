@@ -43,6 +43,13 @@ def vtFileGetData(fileName):
     fr.close()
     return data
 
+# Get the name of the file
+def getFileName(ip):
+    filterOn = ip+"*.json"
+    dirList = os.listdir(path_to_vtCache)
+    findFile = fnmatch.filter(dirList, filterOn)
+    return findFile
+
 # Function to get the time difference in current time and file time
 def getTimeDif (ip):
     fileName = getFileName(ip)
@@ -82,13 +89,6 @@ def checkIfFileExists(ip):
         else:
             return (0, fileName, "error")
     # return len(fileName)
-
-# Get the name of the file
-def getFileName(ip):
-    filterOn = ip+"*.json"
-    dirList = os.listdir(path_to_vtCache)
-    findFile = fnmatch.filter(dirList, filterOn)
-    return findFile
 
 # Create file 
 def createFile(ip):
