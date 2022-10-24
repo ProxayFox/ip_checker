@@ -51,7 +51,6 @@ Update the holding days to increase or decrease how long the script will hold th
         "vt_key":   "Enter VirusTotal Key",
         "urlScan_key": "Enter urlScan Key",
         "abuseIP_key": "Enter abuseIP key",
-        "otx_Key": "Enter OTX Key"
     }
 }
 ```

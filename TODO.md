@@ -4,11 +4,11 @@
   - [ ] VT
     - [ ] Grab root domain and check
     - [ ] Grab sub domain and check
-    - [ ] Retention on Cache
+    - [x] Retention on Cache
   - [ ] ABIP
     - [ ] Grab root domain and check
     - [ ] Grab sub domain and check
-    - [ ] Retention on Cache
+    - [x] Retention on Cache
   - [ ] URLScan
     - [x] Get API Data
     - [x] Save to Cache
