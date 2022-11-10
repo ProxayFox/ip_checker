@@ -9,7 +9,7 @@ import fnmatch
 # Get the current working directory directory
 cwd = os.getcwd()
 # Grab the VT Cache directory
-path_to_vtCache = cwd+"\\DataDumps\\virusTotal\\"
+path_to_vtCache = cwd+"/DataDumps/virusTotal/"
 
 # Function to request data from Virus total
 def vt_url_getData(ip):

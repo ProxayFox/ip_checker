@@ -9,7 +9,7 @@ import fnmatch
 # Get the current working directory directory
 cwd = os.getcwd()
 # Grab the ABIP Cache directory
-path_to_abipCache = cwd+"\\DataDumps\\abuseIP\\"
+path_to_abipCache = cwd+"/DataDumps/abuseIP/"
 
 def abip_url_getData(ip):
     # Defining the api-endpoint
