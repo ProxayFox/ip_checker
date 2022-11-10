@@ -5,7 +5,7 @@ import time
 import fnmatch
 
 # set working directory (windows)
-os.chdir(os.getcwd())
+# os.chdir(os.getcwd())
 # Get the current working directory directory
 cwd = os.getcwd()
 # Grab the VT Cache directory
@@ -153,3 +153,5 @@ def vt_xr_data(ip):
             return vtFileGetData(getFileName(ip)[0])
         else:
             return makeFile
+
+print(path_to_vtCache)

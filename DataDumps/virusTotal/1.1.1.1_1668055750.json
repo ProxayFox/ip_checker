@@ -3,15 +3,15 @@
         "attributes": {
             "jarm": "27d3ed3ed0003ed1dc42d43d00041d6183ff1bfae51ebd88d70384363d525c",
             "network": "1.1.1.0/24",
-            "last_https_certificate_date": 1666185051,
+            "last_https_certificate_date": 1668042305,
             "tags": [],
-            "last_analysis_date": 1666184749,
+            "last_analysis_date": 1668042004,
             "as_owner": "CLOUDFLARENET",
             "last_analysis_stats": {
                 "harmless": 79,
-                "malicious": 3,
+                "malicious": 4,
                 "suspicious": 0,
-                "undetected": 13,
+                "undetected": 12,
                 "timeout": 0
             },
             "whois_date": 1631599972,
@@ -53,8 +53,8 @@
                     "engine_name": "ViriBack"
                 },
                 "Comodo Valkyrie Verdict": {
-                    "category": "undetected",
-                    "result": "unrated",
+                    "category": "malicious",
+                    "result": "malware",
                     "method": "blacklist",
                     "engine_name": "Comodo Valkyrie Verdict"
                 },
@@ -581,11 +581,11 @@
                     "engine_name": "Baidu-International"
                 }
             },
-            "reputation": 78,
-            "last_modification_date": 1666232749,
+            "reputation": 77,
+            "last_modification_date": 1668053500,
             "total_votes": {
                 "harmless": 66,
-                "malicious": 10
+                "malicious": 11
             },
             "last_https_certificate": {
                 "public_key": {

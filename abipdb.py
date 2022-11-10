@@ -5,7 +5,7 @@ import time
 import fnmatch
 
 # set working directory (windows)
-os.chdir(os.getcwd())
+# os.chdir(os.getcwd())
 # Get the current working directory directory
 cwd = os.getcwd()
 # Grab the ABIP Cache directory
@@ -163,11 +163,7 @@ def abip_xr_data(ip):
             return makeFile
 
 
-
-
-
-
-
+print(path_to_abipCache)
 
 
 
