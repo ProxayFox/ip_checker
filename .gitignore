@@ -5,3 +5,4 @@ DataDumps/urlScan/*
 !DataDumps/urlScan/72fe95c5576ec634e214814a32ab785568eda76a.json
 DataDumps/virusTotal/*
 !DataDumps/virusTotal/1.1.1.1_*.json
+.vscode/
