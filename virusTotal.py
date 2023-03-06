@@ -153,5 +153,3 @@ def vt_xr_data(ip):
             return vtFileGetData(getFileName(ip)[0])
         else:
             return makeFile
-
-print(path_to_vtCache)

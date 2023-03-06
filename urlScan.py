@@ -114,4 +114,3 @@ def urlScan_xr_data(url):
 print("Please note: urls are scanned publicly")
 url = input("Enter The URL :: ")
 url_request = urlScan_xr_data(url)
-print(url_request)
