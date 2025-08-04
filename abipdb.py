@@ -4,160 +4,105 @@ import os
 import time
 import fnmatch
 
-# set working directory (windows)
-# os.chdir(os.getcwd())
-# Get the current working directory directory
 cwd = os.getcwd()
-# Grab the ABIP Cache directory
-path_to_abipCache = cwd+"/DataDumps/abuseIP/"
+path_to_abipCache = cwd + "/DataDumps/abuseIP/"
 
-def abip_url_getData(ip):
-  # Defining the api-endpoint
+def abip_url_getData(ip, abip_key):
   url = 'https://api.abuseipdb.com/api/v2/check'
-
   querystring = {
     'ipAddress': ip,
     'maxAgeInDays': '90',
     'verbose': 'true'
   }
-
-  # Get the API Secret
-  # fr = File Read
-  fr = open('api_secrets.json', 'r')
-  abip_key = json.loads(fr.read())['api']['abuseIP_key']
-  fr.close()
-
   headers = {
-      'Accept': 'application/json',
-      'Key': abip_key
+    'Accept': 'application/json',
+    'Key': abip_key
   }
+  return requests.get(url, headers=headers, params=querystring)
 
-  return requests.request(method='GET', url=url, headers=headers, params=querystring)
-
-# Function to pull from a file
 def abipFileGetData(fileName):
-  # file = open(path_to_abipCache+ip+'.json','r')
-  # data = json.loads(file.read())
-  # file.close()
-  # return data
-
-  # fr = file read
-  # Open File and read the details
-  fr = open(path_to_abipCache+fileName,'r')
-  # Read the content and load the json
-  data = json.loads(fr.read())
-  # Close the file
-  fr.close()
+  with open(path_to_abipCache + fileName, 'r') as fr:
+    data = json.load(fr)
   return data
 
+def getFileName(ip):
+  filterOn = ip + "*.json"
+  dirList = os.listdir(path_to_abipCache)
+  findFile = fnmatch.filter(dirList, filterOn)
+  return findFile
 
-# Function to get the time difference in current time and file time
-def getTimeDif (ip):
+def getTimeDif(ip, holding_days):
   fileName = getFileName(ip)
+  if not fileName:
+    return (0, None, None)
   removeIP = fileName[0].split('_')
   removeJson = removeIP[1].split('.json')
   fileTime = int(removeJson[0])
   currentTime = int(time.time())
   getDif = (currentTime - fileTime) / 86400
-
-  file = open("conf.json",'r')
-  cacheLength = int(json.loads(file.read())['cache']['holding_days'])
-  file.close()
-
-  if cacheLength > getDif:
-    # Cache Time difference is within config
+  if holding_days > getDif:
     return (1, fileName[0], getDif)
   else:
-    # Cache Time difference is outside config
     return (0, fileName[0], getDif)
 
-# Get the name of the file
-def getFileName(ip):
-  filterOn = ip+"*.json"
-  dirList = os.listdir(path_to_abipCache)
-  findFile = fnmatch.filter(dirList, filterOn)
-  return findFile
-
-# Function checks if the file is exists or is valid
 def checkIfFileExists(ip):
   fileName = getFileName(ip)
   if len(fileName) == 1:
-    if os.path.exists(path_to_abipCache+fileName[0]) == True:
-      # return 1 if there is a file
+    if os.path.exists(path_to_abipCache + fileName[0]):
       return (1, fileName[0], "valid path")
     else:
-      # return 0 if there is no file
       return (0, fileName[0], "no path")
   else:
     if len(fileName) == 0:
-      # return 0 if the file doesn't exists
       return (0, fileName, "No file")
     elif len(fileName) >= 2:
       return (0, fileName, "too many of same file")
     else:
       return (0, fileName, "error")
-  # return len(fileName)
 
-# Create file
-def createFile(ip):
+def createFile(ip, abip_key):
   if checkIfFileExists(ip)[0] == 0:
-    vt_api = abip_url_getData(ip)
-    if vt_api.status_code == 200:
-      # fx = file create
-      # create the file with the ip.json
-      fx = open(path_to_abipCache+ip+'_'+str(int(time.time()))+".json", 'x')
-      # write the data from the api request to the new file
-      fx.write(vt_api.text)
-      # close the created file
+    abip_api = abip_url_getData(ip, abip_key)
+    if abip_api.status_code == 200:
+      fx = open(path_to_abipCache + ip + '_' + str(int(time.time())) + ".json", 'x')
+      fx.write(abip_api.text)
       fx.close()
-      # Check if the file was successfully created
       isfile = checkIfFileExists(ip)
       if isfile[0] == 1:
-        # File has been successfully created
         return (1, "File Creation Successful", isfile)
       else:
-        # File has been unsuccessfully created
         return (0, "File Creation Unsuccessful", isfile)
-    elif vt_api.status_code == 400:
-      return (0, "VTIP :: Not Found or Missing Value for Value :: "+ip+" :: Status Code :: "+vt_api.status_code)
-
-    elif vt_api.status_code == 404:
-      return (0, "VTIP :: No Response for Value :: "+ip+" :: Status Code :: "+vt_api.status_code)
-
+    elif abip_api.status_code == 400:
+      return (0, f"ABIP :: Not Found or Missing Value for Value :: {ip} :: Status Code :: {abip_api.status_code}")
+    elif abip_api.status_code == 404:
+      return (0, f"ABIP :: No Response for Value :: {ip} :: Status Code :: {abip_api.status_code}")
     else:
-      return (0, "VTIP :: Server Error :: "+ip+" :: Status Code :: "+vt_api.status_code)
+      return (0, f"ABIP :: Server Error :: {ip} :: Status Code :: {abip_api.status_code} :: Or API Keys are missing")
   else:
     return (0, checkIfFileExists(ip))
 
 def deleteFile(ip):
-  os.remove(str(path_to_abipCache+getFileName(ip)[0]))
-  # time.sleep(0.5)
+  os.remove(str(path_to_abipCache + getFileName(ip)[0]))
   if checkIfFileExists(ip)[0] == 0:
-    # File has been deleted
     return 1
   else:
-    # File is still there
     return 0
 
-# Function to handle VirusTotal API/File requests
-def abip_xr_data(ip):
-  # Check if the file exists
+def abip_xr_data(ip, abip_key, holding_days):
   if checkIfFileExists(ip)[0] == 1:
-    if getTimeDif(ip)[0] == 1:
-      # call function to get the file
+    if getTimeDif(ip, holding_days)[0] == 1:
       return abipFileGetData(getFileName(ip)[0])
     else:
       delete = deleteFile(ip)
-      makeFile  = createFile(ip)
-
+      makeFile = createFile(ip, abip_key)
       if delete == 1:
-        if makeFile[0]  == 1:
+        if makeFile[0] == 1:
           return abipFileGetData(getFileName(ip)[0])
         else:
           return makeFile
   else:
-    makeFile  = createFile(ip)
-    if makeFile[0]  == 1:
+    makeFile = createFile(ip, abip_key)
+    if makeFile[0] == 1:
       return abipFileGetData(getFileName(ip)[0])
     else:
       return makeFile
